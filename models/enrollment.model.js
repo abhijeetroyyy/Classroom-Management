@@ -1,16 +1,25 @@
-const  mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const enrollmentSchema = new mongoose.Schema({
-   classID:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Class",
-    required:true
-   },
-   studentId:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:"Student",
-    required:true
-   }
+  classId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Class",
+    required: [true, "Class ID is required"],
+    index: true,
+    unique: true
+  },
+  studentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Student",
+    required: [true, "Student ID is required"],
+    index: true,
+    unique: true
+  }
+}, {
+  timestamps: true,
+  versionKey: false
 });
 
-module.exports=mongoose.model("Enrollment",enrollmentSchema);
+const Enrollment = mongoose.model("Enrollment", enrollmentSchema);
+
+module.exports = Enrollment;

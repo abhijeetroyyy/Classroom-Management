@@ -1,5 +1,16 @@
 # Ignore environment variable files
 .env
+.env.local
+.env.development
+.env.production
 
 # Ignore node_modules directory
 node_modules/
+# Ignore build output directory
+/dist
+# Ignore IDE and editor files
+.vscode/
+.idea/
+# Ignore operating system files
+.DS_Store
+Thumbs.db
